@@ -1,0 +1,117 @@
+    <div class="row">
+    
+        <div class="col-sm-4">
+
+          <h5>Triggers:</h5>
+
+     <div class="panel panel-default">
+      <div class="panel-heading c-list">
+	<span class="title>Triggers</span>
+	  <ul class="pull-right c-controls">
+		<li><a ng-click="addTrigger()" data-toggle="tooltip" data-placement="top" title="Add Trigger"><i class="glyphicon glyphicon-plus"></i></a></li>
+	  </ul>
+      </div>
+	
+
+	<ul class="list-group" id="contact-list">
+		<li ng-repeat="(key, trigger) in siteConfig.triggers track by $index" class="list-group-item">
+			<div>
+				<span ng-click="showTrigger(key, trigger, $index)" ng-model="siteConfig.triggers" class="name btn btn-primary btn-xs">\{{trigger.name}}</span><br />
+			</div>
+			<div class="clearfix"></div>
+		</li>
+	</ul>
+
+     </div> <!-- panel panel-default -->
+
+      {{> saveconfigpartial }}
+
+    </div> <!-- col-sm-7 -->
+
+    <div class="col-sm-8">
+
+          <h5>Trigger Information:</h5>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Name</span>
+                <input type="text" class="form-control" ng-model="selectedTrigger.name" aria-describedby="basic-addon3">
+              </div>
+
+              <label for="serena-site-poc">Pick the notification group and style:</label>
+              <div class="input-group dropdown">
+                <span class="input-group-addon" id="basic-addon3">Notification Group</span>
+                <select ng-model="selectedTrigger.notificationGroup" class="form-control" data-role="select">
+                  <option ng-repeat="group in siteConfig.notificationGroups track by group.name" value="\{{group.name}}">\{{group.name}}</option>
+                </select>
+              </div>
+
+              <div class="input-group dropdown">
+                <span class="input-group-addon" id="basic-addon3">Notification Style</span>
+                <select ng-model="selectedTrigger.notificationStyle" class="form-control" data-role="select">
+                  <option ng-repeat="style in notificationStyles.notificationStyles track by style.value" value="\{{style.value}}">\{{style.name}}</option>
+                </select>
+              </div>
+
+              <div class="input-group dropdown">
+                <span class="input-group-addon" id="basic-addon3">Audible Alert Type</span>
+                <select ng-model="selectedTrigger.audibleAlert" class="form-control" data-role="select">
+                  <option ng-repeat="type in audibleAlertTypes.audibleAlertTypes track by type.value" value="\{{type.value}}">\{{type.name}}</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Response Required?</span>
+                <toggle ng-model="selectedTrigger.responseRequired" on="Enabled" off="Disabled"></toggle>
+              </div>
+
+              <label for="serena-site-poc">Pick the sensor mapping point:</label>
+              <div class="input-group dropdown">
+                <span class="input-group-addon" id="basic-addon3">Sensor Point</span>
+                <select ng-model="selectedTrigger.redis_key" class="form-control" data-role="select">
+                  <option ng-repeat="(key, value) in siteConfig.sensorMappings track by value" value="\{{value}}">\{{value}}</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Min Sensor Samples</span>
+                <input type="text" class="form-control" ng-model="selectedTrigger.minCycles" aria-describedby="basic-addon3">
+                <span class="input-group-addon input-group-addon-after" id="basic-addon3">seconds</span>
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">&gt; Max Value</span>
+                <input type="text" class="form-control" ng-model="selectedTrigger.max" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Exact Value</span>
+                <input type="text" class="form-control" ng-model="selectedTrigger.matchValue" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">&lt; Min Value</span>
+                <input type="text" class="form-control" ng-model="selectedTrigger.min" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Hold Alarm</span>
+                <input type="text" class="form-control" ng-model="selectedTrigger.secondsHeld" aria-describedby="basic-addon3">
+                <span class="input-group-addon input-group-addon-after" id="basic-addon3">seconds</span>
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Trigger Icon</span>
+                <input type="text" class="form-control" ng-model="selectedTrigger.icon" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">
+                      <p><a class="btn btn-danger" role="button" ng-click="removeTrigger()">Remove Trigger &raquo;</a></p>
+                </span>
+              </div>
+            </div>
+
+       </div>
+    </div>
+

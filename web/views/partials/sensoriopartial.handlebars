@@ -1,0 +1,63 @@
+
+      <div class="row">
+        <div class="col-sm-6">
+
+          <h5>Inputs:</h5>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Dial (Analog)</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.dial" aria-describedby="basic-addon3">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">DHT (Digital)</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.dht" aria-describedby="basic-addon3">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Button (Digital)</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.button" aria-describedby="basic-addon3">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Power (Digital)</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.power" aria-describedby="basic-addon3">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Water (Digital)</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.water" aria-describedby="basic-addon3">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">PIR (Digital)</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.pir" aria-describedby="basic-addon3">
+              </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-6">
+
+          <h5>Outputs:</h5>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Green LED (Digital)</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorOutputs.gLed" aria-describedby="basic-addon3">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Red LED (Digital)</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorOutputs.rLed" aria-describedby="basic-addon3">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Buzzer (Digital)</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorOutputs.buzzer" aria-describedby="basic-addon3">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">LC Display (I2C)</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorOutputs.lcd" aria-describedby="basic-addon3">
+              </div>
+            </div>
+
+      {{> saveconfigpartial }}
+
+       </div>
+      </div>
+

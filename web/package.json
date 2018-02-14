@@ -1,0 +1,22 @@
+{
+  "name": "serenaweb",
+  "version": "0.0.1",
+  "description": "Serena configuration interface",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ian McMurray",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "helmet": "^3.6.0",
+    "method-override": "^2.3.8",
+    "moniker": "^0.1.2",
+    "redis": "^2.7.1",
+    "uuid": "^3.0.1"
+  }
+}

@@ -1,0 +1,60 @@
+    <div class="row">
+        
+        <div class="col-sm-4">
+
+          <h5>Notification Groups:</h5>
+
+     <div class="panel panel-default">
+      <div class="panel-heading c-list">
+	<span class="title>Groups</span>
+	  <ul class="pull-right c-controls">
+		<li><a ng-click="addGroup()" data-toggle="tooltip" data-placement="top" title="Add Group"><i class="glyphicon glyphicon-plus"></i></a></li>
+	  </ul>
+      </div>
+	
+
+	<ul class="list-group" id="contact-list">
+		<li ng-repeat="group in siteConfig.notificationGroups track by $index" class="list-group-item">
+			<div>
+				<span ng-click="showGroup(group, $index)" ng-model="siteConfig.notificationGroups" class="name btn btn-primary btn-xs">\{{group.name}}</span><br />
+			</div>
+			<div class="clearfix"></div>
+		</li>
+	</ul>
+
+     </div> <!-- panel panel-default -->
+
+      {{> saveconfigpartial }}
+
+    </div> <!-- col-sm-4 -->
+
+<!-- input column -->
+        <div class="col-sm-8">
+          <h5>Notification Information:</h5>
+<div class="form-group">
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Name</span>
+	  <input type="text" class="form-control" ng-model="selectedGroup.name" aria-describedby="basic-addon3">
+	</div>
+
+	<label for="serena-site-poc">Pick which contacts belong to this notification group:</label>
+	<div class="input-group dropdown">
+	  <span class="input-group-addon" id="basic-addon3">Contacts</span>
+		<select ng-model="selectedGroup.contacts" class="form-control" data-role="select" multiple="true">
+			<option ng-repeat="person in siteConfig.contacts track by $index" value="\{{$index+1}}" ng-selected="selectedGroup.contacts">\{{person.name}}</option>
+		</select>
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">
+          <p><a class="btn btn-danger" role="button" ng-click="removeGroup()">Remove Group &raquo;</a></p>
+	  </span>
+	</div>
+</div>
+
+       </div>
+
+<!-- end of input column -->
+
+
+    </div>

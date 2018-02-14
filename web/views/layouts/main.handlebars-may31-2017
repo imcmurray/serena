@@ -1,0 +1,92 @@
+<!DOCTZYPE html>
+<html ng-app="serena">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Serena Configuration">
+    <meta name="author" content="Ian McMurray">
+    <link rel="icon" href="/images/favicon.ico">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/sticky-footer.css" rel="stylesheet">
+    <link href="/css/angular-bootstrap-toggle.min.css" rel="stylesheet">
+	
+
+    <title>Serena Configuration</title>
+    <link rel="stylesheet" href="/css/bootstrap-flatly.min.css">
+</head>
+<body>
+
+<!-- new nav -->
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Serena Configuration</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            {{#if page.home}}
+		<li class="active"><a href="/">Home</a></li>
+            {{else}}
+		<li><a href="/">Home</a></li>
+            {{/if}}
+            {{#if page.sites}}
+                <li class="active"><a href="/sites">Sites</a></li>
+            {{else}}
+                <li><a href="/sites">Sites</a></li>
+            {{/if}}
+            {{#if page.addUser}}
+	        <li class="active"><a href="/user/add">Add User</a></li>
+            {{else}}
+	        <li><a href="/user/add">Add User</a></li>
+            {{/if}}
+            {{#if page.status}}
+                <li class="active"><a href="/status">Status</a></li>
+            {{else}}
+                <li><a href="/status">Status</a></li>
+            {{/if}}
+         </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {{#if page.contact}}
+            	<li class="active"><a href="/support">Contact Us</a></li>
+            {{else}}
+            	<li><a href="/support">Contact Us</a></li>
+            {{/if}}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<!-- new nav -->
+
+	<div class="site container">
+		{{{body}}}
+	</div>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">SERENA (SErver Room ENvironmental Automaton)</span>
+      </div>
+    </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-sanitize.min.js"></script>
+    <script src="/js/angular-cookies.min.js"></script>
+    <script src="/js/angular-bootstrap-toggle.min.js"></script>
+    <script src="/js/serena.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/bootstrap.min.js"></script>
+
+</body>
+</html>

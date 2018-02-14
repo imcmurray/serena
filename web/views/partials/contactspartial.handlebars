@@ -1,0 +1,72 @@
+    <div class="row">
+
+        <div class="col-sm-4">
+
+          <h5>Contacts:</h5>
+
+     <div class="panel panel-default">
+      <div class="panel-heading c-list">
+	<span class="title>Contacts</span>
+	  <ul class="pull-right c-controls">
+		<li><a ng-click="addContact()" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="glyphicon glyphicon-plus"></i></a></li>
+	  </ul>
+      </div>
+	
+
+	<ul class="list-group" id="contact-list">
+		<li ng-repeat="person in siteConfig.contacts track by $index" class="list-group-item">
+			<div>
+				<span ng-click="showPerson(person, $index)" ng-model="siteConfig.contacts" class="name btn btn-primary btn-xs">\{{person.name}}</span>&nbsp;
+				<i ng-show="siteConfig.siteInfo.pointOfContact==$index+1" class="text-muted glyphicon glyphicon-star">POC</i>
+				<br />
+			</div>
+			<div class="clearfix"></div>
+		</li>
+	</ul>
+
+     </div> <!-- panel panel-default -->
+
+      {{> saveconfigpartial }}
+
+    </div> <!-- col-sm-4 -->
+
+        <div class="col-sm-8">
+          <h5>Contact Information:</h5>
+<div class="form-group">
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Name</span>
+	  <input type="text" class="form-control" ng-model="selectedPerson.name" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Email</span>
+	  <input type="text" class="form-control" ng-model="selectedPerson.email" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Office Number</span>
+	  <input type="text" class="form-control" ng-model="selectedPerson.officeNumber" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Cell Number</span>
+	  <input type="text" class="form-control" ng-model="selectedPerson.textNumber" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Allow Status</span>
+	  <toggle ng-model="selectedPerson.grantStatus" on="Enabled" off="Disabled"></toggle>
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Administrator</span>
+	  <toggle ng-model="selectedPerson.allowAdmin" on="Enabled" off="Disabled"></toggle>
+	</div>
+	<div class="input-group">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">
+          <p><a class="btn btn-danger" role="button" ng-click="removeContact()">Remove Contact &raquo;</a></p>
+	  </span>
+	</div>
+</div>
+
+       </div>
+
+    </div>
+

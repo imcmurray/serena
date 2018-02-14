@@ -1,0 +1,14 @@
+
+<div class="control-group" ng-hide="saveConfigStatus == '9'">
+<div class="controls">
+<button ng-click="saveConfiguration();" ng-class="{'btn btn-danger btn-large': saveConfigStatus==3,'btn btn-success': saveConfigStatus==2, 'btn btn-warning': saveConfigStatus==1}" class="btn btn-primary">
+<span ng-switch="saveConfigStatus">
+<span ng-switch-when="3"><i class="icon-white icon-remove"></i> PROBLEM Saving!!</span>
+<span ng-switch-when="2"><i class="icon-white icon-ok"></i> SAVED</span>
+<span ng-switch-when="1"><i class="icon-white icon-refresh"></i> Saving Configuration, please wait</span>
+<span ng-switch-when="0"><i class="icon-white icon-question-sign"></i> Save Configuration &raquo;</span>
+<span ng-switch-default><i class="icon-white icon-question-sign"></i> Save Configuration &raquo;</span>
+</span>
+</button>
+</div>
+</div>

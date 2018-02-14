@@ -1,0 +1,58 @@
+
+      <div class="row">
+        <div class="col-sm-6">
+
+          <h5>Early Warning Durations:</h5>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Alarm delay</span>
+                <input type="text" class="form-control" ng-model="siteConfig.earlyWarning.secondsBeforePromotion" aria-describedby="basic-addon3">
+                <span class="input-group-addon input-group-addon-after" id="basic-addon3">seconds</span>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Mute duration</span>
+                <input type="text" class="form-control" ng-model="siteConfig.earlyWarning.secondsMuteHeld" aria-describedby="basic-addon3">
+                <span class="input-group-addon input-group-addon-after" id="basic-addon3">seconds</span>
+              </div>
+            </div>
+
+      {{> saveconfigpartial }}
+
+        </div>
+
+        <div class="col-sm-6">
+
+          <h5>Alarm Durations:</h5>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Alarm window</span>
+                <input type="text" class="form-control" ng-model="siteConfig.alert.secondsHeld" aria-describedby="basic-addon3">
+                <span class="input-group-addon input-group-addon-after" id="basic-addon3">seconds</span>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Contact response</span>
+                <input type="text" class="form-control" ng-model="siteConfig.alert.secondsForContactResponse" aria-describedby="basic-addon3">
+                <span class="input-group-addon input-group-addon-after" id="basic-addon3">seconds</span>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Cascade delay</span>
+                <input type="text" class="form-control" ng-model="siteConfig.alert.secondsNextContactCascade" aria-describedby="basic-addon3">
+                <span class="input-group-addon input-group-addon-after" id="basic-addon3">seconds</span>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Threshold delay</span>
+                <input type="text" class="form-control" ng-model="siteConfig.alert.secondsBetweenThresholdCheck" aria-describedby="basic-addon3">
+                <span class="input-group-addon input-group-addon-after" id="basic-addon3">seconds</span>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Image delay</span>
+                <input type="text" class="form-control" ng-model="siteConfig.alert.secondsBetweenMotionCapture" aria-describedby="basic-addon3">
+                <span class="input-group-addon input-group-addon-after" id="basic-addon3">seconds</span>
+              </div>
+            </div>
+
+       </div>
+      </div>
+

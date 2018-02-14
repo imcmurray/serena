@@ -1,0 +1,150 @@
+[option-redis]
+sensor_path = ee091426-cfbf-4e81-9ef1-bed32eba18aa:sensors
+
+[option-alert]
+secondsforcontactresponse = 120
+secondsheld = 1200
+secondsbetweenthresholdcheck = 60
+secondsnextcontactcascade = 600
+secondsbetweenmotioncapture = 30
+
+[option-startup]
+notificationgroup = serenaStart
+sms = false
+email = false
+
+[option-siteInfo]
+pointofcontact = 2
+hostname = serena.local
+parenthostname = serena.local
+courtinitials = 5th SRoom
+courtname = 5th floor Computer Server Room
+site_uuid = ee091426-cfbf-4e81-9ef1-bed32eba18aa
+app_uuid = d1e8f886-0196-473c-86cb-ac1014b400a0
+
+[option-earlyWarning]
+secondsbeforepromotion = 60
+secondsmuteheld = 600
+
+[contact-1]
+grantstatus = true
+name = Jon Smith
+officenumber = +18081231234
+allowadmin = true
+textnumber = +18081231234
+email = jon_smith@example.com
+
+[contact-3]
+grantstatus = true
+name = Ray Smith
+officenumber = +18082341234
+allowadmin = true
+textnumber = +18082341234
+email = ray_smith@example.com
+
+[contact-2]
+grantstatus = true
+name = Ian Sighup
+officenumber = +18083451234
+allowadmin = true
+textnumber = +18083451234
+email = ian_sighup@example.com
+
+[contact-4]
+textnumber = +18084561234
+grantstatus = true
+name = Rodney Smith
+
+[notification-1]
+active = true
+name = itStaff
+contacts = 1,2,3
+
+[notification-2]
+active = true
+name = serenaStart
+contacts = 2
+
+[notification-4]
+index = 3
+name = Everyone
+contacts = 1,2,3,4
+
+[trigger-7da575c7-fd0a-45c8-bbe3-ad0fd2301269]
+redis_key = temperature
+notificationstyle = all
+name = Room Temp Over
+index = 0
+buzzerchirpalert = false
+max = 28
+mincycles = 10
+notificationgroup = itStaff
+key = 7da575c7-fd0a-45c8-bbe3-ad0fd2301269
+audiblealert = none
+secondsheld = 600
+buzzersolidalert = true
+responserequired = false
+icon = fa-wrench
+
+[trigger-b7f8689e-ebad-4deb-98de-bdce4a54e8d6]
+redis_key = serenaTemp
+index = 2
+name = Serena CPU Temp
+notificationstyle = all
+buzzerchirpalert = false
+max = 65
+audiblealert = beep
+notificationgroup = serenaStart
+key = b7f8689e-ebad-4deb-98de-bdce4a54e8d6
+mincycles = 15
+secondsheld = 1200
+buzzersolidalert = false
+responserequired = false
+icon = fa-thermometer-hald
+
+[trigger-aa74f76e-ce22-49d0-b0d5-e9f028ee046a]
+redis_key = motion
+index = 2
+name = Motion Detected
+notificationstyle = all
+buzzerchirpalert = false
+matchvalue = 1
+audiblealert = none
+notificationgroup = serenaStart
+key = aa74f76e-ce22-49d0-b0d5-e9f028ee046a
+mincycles = 1
+secondsheld = 30
+buzzersolidalert = false
+responserequired = false
+icon = fa-wrench
+
+[sensor-input]
+dial = 0
+power = 21
+button = 2
+water = 8
+pir = 3
+dht = 4
+
+[sensor-mapping]
+dht-humidity = humidity
+power = power
+ping = network
+water = water
+dht-temperature = temperature
+cputemp = serenaTemp
+pir = motion
+
+[sensor-output]
+buzzer = 7
+rled = 6
+lcd = 1
+gled = 5
+
+[identifiers]
+options = ['option-redis', 'option-alert', 'option-startup', 'option-siteInfo', 'option-earlyWarning']
+contacts = ['contact-1', 'contact-3', 'contact-2', 'contact-4']
+notifications = ['notification-1', 'notification-2', 'notification-4']
+triggers = ['trigger-7da575c7-fd0a-45c8-bbe3-ad0fd2301269', 'trigger-b7f8689e-ebad-4deb-98de-bdce4a54e8d6', 'trigger-aa74f76e-ce22-49d0-b0d5-e9f028ee046a']
+thresholds = []
+

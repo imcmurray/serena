@@ -1,0 +1,100 @@
+<div ng-controller="siteController" class="ng-cloak">
+<div class="page-header">
+  <h1>\{{siteConfig.siteInfo.courtInitials}} <small>Site Configuration</small></h1>
+</div>
+
+{{#if error}} <span>{{error}}</span>{{/if}}
+
+<div class="subnav">
+
+  <ul class="nav nav-tabs">
+
+      <li ng-class="{active: selectedTab == 0}">
+      <a ng-click="selectedTab = 0;site_config_section='siteInfo'"><i class="glyphicon glyphicon-scale"></i>&nbsp; Overview</a>
+      </li>
+
+      <li ng-class="{active: selectedTab == 1}">
+      <a ng-click="selectedTab = 1;site_config_section='sensor'"><i class="glyphicon glyphicon-transfer"></i>&nbsp; Sensor I/O</a>
+      </li>
+
+      <li ng-class="{active: selectedTab == 5}">
+      <a ng-click="selectedTab = 5;site_config_section='sensor-map'"><i class="glyphicon glyphicon-random"></i>&nbsp; Mappings</a>
+      </li>
+
+      <li ng-class="{active: selectedTab == 2}">
+      <a ng-click="selectedTab = 2;site_config_section='contact'"><i class="glyphicon glyphicon-user"></i>&nbsp; Contacts</a>
+      </li>
+
+      <li ng-class="{active: selectedTab == 3}">
+      <a ng-click="selectedTab = 3;site_config_section='groups'"><i class="glyphicon glyphicon-th-large"></i>&nbsp; Groups</a>
+      </li>
+
+      <li ng-class="{active: selectedTab == 4}">
+      <a ng-click="selectedTab = 4;site_config_section='threshold'"><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp; Triggers</a>
+      </li>
+
+      <li ng-class="{active: selectedTab == 6}">
+      <a ng-click="selectedTab = 6;site_config_section='duration'"><i class="glyphicon glyphicon-time"></i>&nbsp; Durations</a>
+      </li>
+
+  </ul>
+
+</div>
+
+<div class="tab-content" ng-show="selectedTab == 0">
+  <div class="container">
+
+    {{> overviewpartial }}
+
+  </div>
+</div>
+
+<div class="tab-content" ng-show="selectedTab == 1">
+  <div class="container">
+
+    {{> sensoriopartial }}
+
+  </div>
+</div>
+
+<div class="tab-content" ng-show="selectedTab == 2">
+  <div class="container">
+
+    {{> contactspartial }}
+
+  </div>
+</div>
+
+<div class="tab-content" ng-show="selectedTab == 3">
+  <div class="container">
+
+    {{> groupspartial }}
+
+  </div>
+</div>
+
+<div class="tab-content" ng-show="selectedTab == 4">
+  <div class="container">
+
+    {{> triggerspartial }}
+
+  </div>
+</div>
+
+<div class="tab-content" ng-show="selectedTab == 5">
+  <div class="container">
+
+    {{> mappingspartial }}
+
+  </div>
+</div>
+
+<div class="tab-content" ng-show="selectedTab == 6">
+  <div class="container">
+
+    {{> durationspartial }}
+
+  </div>
+</div>
+
+</div>

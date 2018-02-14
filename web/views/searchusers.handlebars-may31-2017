@@ -1,0 +1,41 @@
+<h1>Search Users</h1>
+
+{{#if error}} <span>{{error}}</span>{{/if}}
+
+<form class="form-inline" method="POST" action="/user/search">
+	<div class="form-group">
+		<input type="text" name="id" class="form-control" placeholder="Search Users by ID">
+	</div>
+	<input type="submit" class="btn btn-primary" value="Search">
+</form>
+
+<p>{{foo}}</p>
+<p>{{bar}}</p>
+
+{{#if serenaDBs}}
+	<p><ul>
+		{{#each serenaDBs}}
+			<li>Database ID: {{db_id}} Database Name:{{db_name}}</li>
+		{{/each}}
+	</ul></p>
+{{else}}
+	<h5>
+		<span style="color:red">Sorry, No databases have been defined yet</span>
+	</h5>
+{{/if}}
+
+	<p><ul>
+		{{#each serenaDBs}}
+			<li>Database ID: {{db_id}} Database Name:{{db_name}}</li>
+		{{else}}
+			<li><span style="color:red">No Databases have been defined yet!</span></li>
+		{{/each}}
+	</ul></p>
+
+<hr>
+
+<select dropdown class="dropdown" name="database">
+	{{#each serenaDBs}}
+		{{{option db_id db_name selected}}}
+	{{/each}}
+</select>

@@ -1,0 +1,7 @@
+This is how I loaded the txt file (containing REDIS commands and data) into REDIS:
+
+cat db-apr-5-2017.txt | redis-cli -h localhost -p 9080 -a HelloWorldOfRedis -n 1
+
+where -n is the database number within redis and -a expresses the auth passphrase
+
+

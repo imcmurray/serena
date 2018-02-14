@@ -1,0 +1,53 @@
+<h1>Serena Sites</h1>
+
+
+{{#if error}} <span>{{error}}</span>{{/if}}
+
+
+ <div class="container-fluid">
+
+        <div class="row">
+
+            <form method="POST" action="/sites/search" class="form-horizontal" role="form" data-parsley-validate novalidate>
+
+                <div class="container-fluid shadow">
+                    <div class="row">
+                        <div id="valErr" class="row viewerror clearfix hidden">
+                            <div class="alert alert-danger">Oops! Seems there are some errors..</div>
+                        </div>
+
+                        <div id="valOk" class="row viewerror clearfix hidden">
+                            <div class="alert alert-success">Yay! ..</div>
+                        </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12"><div class="form-group" rel="popover" data-trigger="hover" data-content="Pick a site!" data-original-title="">
+			    <label class="control-label control-label-left col-sm-3" for="selectSerenaSite">Select Serena Site<span class="req"> *</span></label>
+			    <div class="controls col-sm-9">
+                    
+                <select name="selectSerenaSite" id="selectSerenaSite" class="form-control" data-role="select" required="required" data-parsley-errors-container="#errId1">
+		  <option value=""></option>
+	{{#each serenaDBs}}
+		{{{option db_uuid db_name selected}}}
+	{{/each}}
+		  <option value="NEW">NEW SITE</option>
+		</select><span class="help-block">Pick an existing site or select NEW SITE from the dropdown</span><span id="errId1" class="error"></span>
+
+			<input type="submit" class="btn btn-primary" value="Select Site">
+</div>
+                
+		</div></div>
+                                    </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+

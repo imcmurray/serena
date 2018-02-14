@@ -1,0 +1,50 @@
+    <div class="row">
+        
+        <div class="col-sm-12">
+
+          <h5>Sensor Mappings:</h5>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">DHT Temperature</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['dht-temperature']" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">DHT Humidity</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['dht-humidity']" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Water Detector</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['water']" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Power Detector</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['power']" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Motion Sensor</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['pir']" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Serena CPU Temp</span>
+                <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['cpuTemp']" aria-describedby="basic-addon3">
+              </div>
+
+              <label for="serena-site-poc">The following path specifies where Serena sensor data will be stored in Redis:</label>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Sensor Path</span>
+                <input type="text" class="form-control" ng-model="siteConfig.redis['sensor_path']" aria-describedby="basic-addon3" disabled="disabled">
+              </div>
+            </div>
+
+      {{> saveconfigpartial }}
+
+        </div>
+	
+    </div>
+

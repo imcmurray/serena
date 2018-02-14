@@ -1,0 +1,100 @@
+    <div class="row">
+        
+      <div class="span well">
+
+        <div class="form-group">
+
+	<label for="serena-site-initials">Serena site identification</label>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Like your Court initials</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.siteInfo.courtInitials" aria-describedby="basic-addon3">
+	</div>
+
+	<label for="serena-site-name">Full site name</label>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Please be descriptive</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.siteInfo.courtName" aria-describedby="basic-addon3">
+	</div>
+
+	<label for="serena-site-poc">Point of contact for this site?</label>
+	<div class="input-group dropdown">
+	  <span class="input-group-addon" id="basic-addon3">Serena maintainer</span>
+		<select ng-model="siteConfig.siteInfo.pointOfContact" class="form-control" data-role="select">
+			<option ng-repeat="person in siteConfig.contacts track by $index" value="\{{$index+1}}">\{{person.name}} [Office: \{{person.officeNumber}}]</option>
+		</select>
+	</div>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon3">SMS on Serena Start?</span>
+    <toggle ng-model="siteConfig.startup.sms" on="Yes" off="No"></toggle>
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon3">Email on Serena Start?</span>
+    <toggle ng-model="siteConfig.startup.email" on="Yes" off="No"></toggle>
+  </div>
+
+  <label for="serena-site-poc">Send Serena start to which notification group:</label>
+  <div class="input-group dropdown">
+    <span class="input-group-addon" id="basic-addon3">Notification Group</span>
+    <select ng-model="siteConfig.startup.notificationGroup" class="form-control" data-role="select">
+    <option ng-repeat="group in siteConfig.notificationGroups track by group.name" value="\{{group.name}}">\{{group.name}}</option>
+    </select>
+  </div>
+
+  <label for="serena-site-poc">Hostname information (all Serena devices must be on the same network!)</label>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Hostname</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.siteInfo.hostname" aria-describedby="basic-addon3">
+	  <span class="input-group-addon input-group-addon-after" id="basic-addon3">Include the local hostname (ie: serena.local)</span>
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Parent Hostname</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.siteInfo.parentHostname" aria-describedby="basic-addon3">
+	  <span class="input-group-addon input-group-addon-after" id="basic-addon3">Hostname running the SMS Dongle (ie: serena.local)</span>
+	</div>
+
+  <label for="serena-site-app_uuid">Unique identifiers</label>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Site UUID</span>
+	  <input type="text" class="form-control" ng-model="site_uuid" aria-describedby="basic-addon3" disabled="disabled">
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Application UUID</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.siteInfo.app_uuid" aria-describedby="basic-addon3" disabled="disabled">
+	</div>
+
+	<div class="input-group" ng-show="siteConfig.device.mac_address.length>10">
+	  <span class="input-group-addon" id="basic-addon3">MAC Address</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.device.mac_address" aria-describedby="basic-addon3" disabled="disabled">
+	</div>
+
+	<div class="input-group" ng-show="siteConfig.device.last_updated.length>5">
+	  <span class="input-group-addon" id="basic-addon3">Last Updated</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.device.last_updated*1000 | date : 'd MMMM yyyy HH:MM:ss'" aria-describedby="basic-addon3" disabled="disabled">
+	</div>
+
+	<div class="input-group" ng-show="siteConfig.device.update_required==1">
+	  <span class="input-group-addon" id="basic-addon3"><strong>Waiting for device to auto update</strong></span>
+	</div>
+
+        </div> <!-- form-group -->
+
+      </div> <!-- span well -->
+      
+    </div>
+
+    <div class="row">
+      <div class="cols-xs-6">
+  <span class="pull-right">
+      {{> deletesitepartial }}
+  </span>
+      </div>
+      <div class="cols-xs-6">
+      {{> saveconfigpartial }}
+      </div>
+    </div>

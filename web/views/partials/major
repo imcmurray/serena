@@ -1,0 +1,467 @@
+<div ng-controller="siteController" class="ng-cloak">
+<div class="page-header">
+  <h1>\{{siteConfig.siteInfo.courtInitials}} <small>Site Configuration</small></h1>
+</div>
+
+{{#if error}} <span>{{error}}</span>{{/if}}
+
+<!-- <p ng-bind-html="hello"></p> -->
+
+              <div class="subnav">
+
+<ul class="nav nav-tabs">
+
+  		<li ng-class="{active: selectedTab == 0}">
+		<a ng-click="selectedTab = 0;site_config_section='siteInfo'"><i class="glyphicon glyphicon-scale"></i>&nbsp; Overview</a>
+		</li>
+
+  		<li ng-class="{active: selectedTab == 1}">
+		<a ng-click="selectedTab = 1;site_config_section='sensor'"><i class="glyphicon glyphicon-transfer"></i>&nbsp; Sensor I/O</a>
+		</li>
+
+  		<li ng-class="{active: selectedTab == 5}">
+		<a ng-click="selectedTab = 5;site_config_section='sensor-map'"><i class="glyphicon glyphicon-random"></i>&nbsp; Mappings</a>
+		</li>
+
+  		<li ng-class="{active: selectedTab == 2}">
+		<a ng-click="selectedTab = 2;site_config_section='contact'"><i class="glyphicon glyphicon-user"></i>&nbsp; Contacts</a>
+		</li>
+
+  		<li ng-class="{active: selectedTab == 3}">
+		<a ng-click="selectedTab = 3;site_config_section='groups'"><i class="glyphicon glyphicon-th-large"></i>&nbsp; Groups</a>
+		</li>
+
+  		<li ng-class="{active: selectedTab == 4}">
+		<a ng-click="selectedTab = 4;site_config_section='threshold'"><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp; Triggers</a>
+		</li>
+</ul>
+</div>
+<!-- <pre> -->
+<!-- {{site_keys}} -->
+<!-- </pre> -->
+
+<div class="tab-content" ng-show="selectedTab == 0">
+  <div class="container-fluid">
+    <div class="row">
+        
+      <div class="span well">
+
+        <div class="form-group">
+
+	<label for="serena-site-initials">Serena site identification</label>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Like your Court initials</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.siteInfo.courtInitials" aria-describedby="basic-addon3">
+	</div>
+
+	<label for="serena-site-name">Full site name</label>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Please be descriptive</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.siteInfo.courtName" aria-describedby="basic-addon3">
+	</div>
+
+	<label for="serena-site-poc">Point of contact for this site?</label>
+	<div class="input-group dropdown">
+	  <span class="input-group-addon" id="basic-addon3">Serena maintainer</span>
+		<select ng-model="siteConfig.siteInfo.pointOfContact" class="form-control" data-role="select">
+			<option ng-repeat="person in siteConfig.contacts track by $index" value="\{{$index+1}}">\{{person.name}}</option>
+		</select>
+	</div>
+
+	<label for="serena-site-app_uuid">Unique identifiers</label>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Site UUID</span>
+	  <input type="text" class="form-control" ng-model="site_uuid" aria-describedby="basic-addon3" disabled="disabled">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Application UUID</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.siteInfo.app_uuid" aria-describedby="basic-addon3" disabled="disabled">
+	</div>
+
+        </div>
+
+      </div>  
+      
+      {{> saveconfigpartial }}
+
+    </div>
+  </div>      
+</div>
+
+<div class="tab-content" ng-show="selectedTab == 1">
+  <div class="container-fluid">
+
+<!-- start of sensors -->
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-sm-6">
+          <h5>Inputs:</h5>
+<div class="form-group">
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Dial (Analog)</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.dial" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">DHT (Digital)</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.dht" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Button (Digital)</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.button" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Power (Digital)</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.power" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Water (Digital)</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.water" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">PIR (Digital)</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorInputs.pir" aria-describedby="basic-addon3">
+	</div>
+</div>
+
+        </div>
+        <div class="col-sm-6">
+          <h5>Outputs:</h5>
+
+<div class="form-group">
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Green LED (Digital)</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorOutputs.gLed" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Red LED (Digital)</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorOutputs.rLed" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Buzzer (Digital)</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorOutputs.buzzer" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">LC Display (I2C)</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorOutputs.lcd" aria-describedby="basic-addon3">
+	</div>
+</div>
+      {{> saveconfigpartial }}
+
+       </div>
+      </div>
+
+<!-- end of sensors -->
+
+  </div>      
+</div>
+
+<div class="tab-content" ng-show="selectedTab == 2">
+  <div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-4">
+
+          <h5>Contacts:</h5>
+
+     <div class="panel panel-default">
+      <div class="panel-heading c-list">
+	<span class="title>Contacts</span>
+	  <ul class="pull-right c-controls">
+		<li><a ng-click="addContact()" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="glyphicon glyphicon-plus"></i></a></li>
+	  </ul>
+      </div>
+	
+
+	<ul class="list-group" id="contact-list">
+		<li ng-repeat="person in siteConfig.contacts track by $index" class="list-group-item">
+			<div>
+				<span ng-click="showPerson(person, $index)" ng-model="siteConfig.contacts" class="name btn btn-primary btn-xs">\{{person.name}}</span>&nbsp;
+				<i ng-show="siteConfig.siteInfo.pointOfContact==$index+1" class="text-muted glyphicon glyphicon-star">POC</i>
+				<br />
+			</div>
+			<div class="clearfix"></div>
+		</li>
+	</ul>
+
+     </div> <!-- panel panel-default -->
+
+      {{> saveconfigpartial }}
+
+    </div> <!-- col-sm-7 -->
+
+<!-- input column -->
+        <div class="col-sm-8">
+          <h5>Contact Information:</h5>
+<div class="form-group">
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Name</span>
+	  <input type="text" class="form-control" ng-model="selectedPerson.name" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Email</span>
+	  <input type="text" class="form-control" ng-model="selectedPerson.email" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Office Number</span>
+	  <input type="text" class="form-control" ng-model="selectedPerson.officeNumber" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Cell Number</span>
+	  <input type="text" class="form-control" ng-model="selectedPerson.textNumber" aria-describedby="basic-addon3">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Allow Status</span>
+	  <toggle ng-model="selectedPerson.grantStatus" on="Enabled" off="Disabled"></toggle>
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Administrator</span>
+	  <toggle ng-model="selectedPerson.allowAdmin" on="Enabled" off="Disabled"></toggle>
+	</div>
+	<div class="input-group">
+	</div>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">
+          <p><a class="btn btn-danger" role="button" ng-click="removeContact()">Remove Contact &raquo;</a></p>
+	  </span>
+	</div>
+</div>
+
+       </div>
+
+<!-- end of input column -->
+
+    </div> <!-- row -->
+  </div>      
+</div>
+
+<div class="tab-content" ng-show="selectedTab == 3">
+  <div class="container-fluid">
+    <div class="row">
+        
+        <div class="col-sm-4">
+
+          <h5>Notification Groups:</h5>
+
+     <div class="panel panel-default">
+      <div class="panel-heading c-list">
+	<span class="title>Groups</span>
+	  <ul class="pull-right c-controls">
+		<li><a ng-click="addGroup()" data-toggle="tooltip" data-placement="top" title="Add Group"><i class="glyphicon glyphicon-plus"></i></a></li>
+	  </ul>
+      </div>
+	
+
+	<ul class="list-group" id="contact-list">
+		<li ng-repeat="group in siteConfig.notificationGroups track by $index" class="list-group-item">
+			<div>
+				<span ng-click="showGroup(group, $index)" ng-model="siteConfig.notificationGroups" class="name btn btn-primary btn-xs">\{{group.name}}</span><br />
+			</div>
+			<div class="clearfix"></div>
+		</li>
+	</ul>
+
+     </div> <!-- panel panel-default -->
+
+      {{> saveconfigpartial }}
+
+    </div> <!-- col-sm-7 -->
+
+<!-- input column -->
+        <div class="col-sm-8">
+          <h5>Notification Information:</h5>
+<div class="form-group">
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Name</span>
+	  <input type="text" class="form-control" ng-model="selectedGroup.name" aria-describedby="basic-addon3">
+	</div>
+
+	<label for="serena-site-poc">Pick which contacts belong to this notification group:</label>
+	<div class="input-group dropdown">
+	  <span class="input-group-addon" id="basic-addon3">Contacts</span>
+		<select ng-model="selectedGroup.contacts" class="form-control" data-role="select" multiple="true">
+			<option ng-repeat="person in siteConfig.contacts track by $index" value="\{{$index+1}}" ng-selected="selectedGroup.contacts">\{{person.name}}</option>
+		</select>
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">
+          <p><a class="btn btn-danger" role="button" ng-click="removeGroup()">Remove Group &raquo;</a></p>
+	  </span>
+	</div>
+</div>
+
+       </div>
+
+<!-- end of input column -->
+
+
+    </div>
+  </div>      
+</div>
+
+<!-- TRIGGERS -->
+
+<div class="tab-content" ng-show="selectedTab == 4">
+  <div class="container-fluid">
+    <div class="row">
+    
+   <!-- Start -->
+        <div class="col-sm-4">
+
+          <h5>Triggers:</h5>
+
+     <div class="panel panel-default">
+      <div class="panel-heading c-list">
+	<span class="title>Triggers</span>
+	  <ul class="pull-right c-controls">
+		<li><a ng-click="addTrigger()" data-toggle="tooltip" data-placement="top" title="Add Trigger"><i class="glyphicon glyphicon-plus"></i></a></li>
+	  </ul>
+      </div>
+	
+
+	<ul class="list-group" id="contact-list">
+		<li ng-repeat="(key, trigger) in siteConfig.triggers track by $index" class="list-group-item">
+			<div>
+				<span ng-click="showTrigger(key, trigger, $index)" ng-model="siteConfig.triggers" class="name btn btn-primary btn-xs">\{{trigger.name}}</span><br />
+			</div>
+			<div class="clearfix"></div>
+		</li>
+	</ul>
+
+     </div> <!-- panel panel-default -->
+
+      {{> saveconfigpartial }}
+
+    </div> <!-- col-sm-7 -->
+
+<!-- input column -->
+        <div class="col-sm-8">
+          <h5>Trigger Information:</h5>
+<div class="form-group">
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Name</span>
+	  <input type="text" class="form-control" ng-model="selectedTrigger.name" aria-describedby="basic-addon3">
+	</div>
+
+	<label for="serena-site-poc">Pick the notification group and style:</label>
+	<div class="input-group dropdown">
+	  <span class="input-group-addon" id="basic-addon3">Notification Group</span>
+		<select ng-model="selectedTrigger.notificationGroup" class="form-control" data-role="select">
+			<option ng-repeat="group in siteConfig.notificationGroups track by group.name" value="\{{group.name}}">\{{group.name}}</option>
+		</select>
+	</div>
+
+	<div class="input-group dropdown">
+	  <span class="input-group-addon" id="basic-addon3">Notification Style</span>
+		<select ng-model="selectedTrigger.notificationStyle" class="form-control" data-role="select">
+			<option ng-repeat="style in notificationStyles.notificationStyles track by style.value" value="\{{style.value}}">\{{style.name}}</option>
+		</select>
+	</div>
+
+	<label for="serena-site-poc">Pick the sensor mapping point:</label>
+	<div class="input-group dropdown">
+	  <span class="input-group-addon" id="basic-addon3">Sensor Point</span>
+		<select ng-model="selectedTrigger.redis_key" class="form-control" data-role="select">
+			<option ng-repeat="(key, value) in siteConfig.sensorMappings track by value" value="\{{value}}">\{{value}}</option>
+		</select>
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Number of Cycles</span>
+	  <input type="text" class="form-control" ng-model="selectedTrigger.minCycles" aria-describedby="basic-addon3">
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Max Value</span>
+	  <input type="text" class="form-control" ng-model="selectedTrigger.max" aria-describedby="basic-addon3">
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Exact Value</span>
+	  <input type="text" class="form-control" ng-model="selectedTrigger.matchValue" aria-describedby="basic-addon3">
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Min Value</span>
+	  <input type="text" class="form-control" ng-model="selectedTrigger.min" aria-describedby="basic-addon3">
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Audible Alert?</span>
+	  <toggle ng-model="selectedTrigger.buzzerSolidAlert" on="Enabled" off="Disabled"></toggle>
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Response Required?</span>
+	  <toggle ng-model="selectedTrigger.responseRequired" on="Enabled" off="Disabled"></toggle>
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">
+          <p><a class="btn btn-danger" role="button" ng-click="removeTrigger()">Remove Trigger &raquo;</a></p>
+	  </span>
+	</div>
+</div>
+
+       </div>
+   <!-- End-->    
+    </div> <!-- row -->
+
+    <div class="row">
+      <h2>Hello</h2>
+    </div>
+  </div>      
+</div>
+
+<!-- SENSOR MAPPING -->
+<div class="tab-content" ng-show="selectedTab == 5">
+  <div class="container-fluid">
+    <div class="row">
+        
+      <!-- Example row of columns -->
+        <div class="col-sm-12">
+          <h5>Sensor Mappings:</h5>
+<div class="form-group">
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">DHT Temperature</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['dht-temperature']" aria-describedby="basic-addon3">
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">DHT Humidity</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['dht-humidity']" aria-describedby="basic-addon3">
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Water Detector</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['water']" aria-describedby="basic-addon3">
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Power Detector</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['power']" aria-describedby="basic-addon3">
+	</div>
+
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Motion Sensor</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['pir']" aria-describedby="basic-addon3">
+	</div>
+
+	<label for="serena-site-poc">The following path specifies where Serena sensor data will be stored in Redis:</label>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon3">Sensor Path</span>
+	  <input type="text" class="form-control" ng-model="siteConfig.sensorMappings['sensor_path']" aria-describedby="basic-addon3" disabled="disabled">
+	</div>
+
+</div>
+
+      {{> saveconfigpartial }}
+
+        </div>
+	
+    </div>
+  </div>      
+</div>
+</div>
+

@@ -1,0 +1,14 @@
+<div class="control-group">
+<div class="controls">
+<button ng-click="deleteSite();" ng-class="{'btn btn-danger btn-large': deleteSiteStatus==3,'btn btn-success': deleteSiteStatus==2, 'btn btn-warning': deleteSiteStatus==1}" class="btn btn-danger">
+<span ng-switch="deleteSiteStatus">
+<span ng-switch-when="3"><i class="icon-white icon-remove"></i> PROBLEM Deleting Site!</span>
+<span ng-switch-when="2"><i class="icon-white icon-ok"></i> Site Deleted</span>
+<span ng-switch-when="1"><i class="icon-white icon-refresh"></i> Deleting Site, please wait</span>
+<span ng-switch-when="0"><i class="icon-white icon-question-sign"></i> DELETE SITE &raquo;</span>
+<span ng-switch-default><i class="icon-white icon-question-sign"></i> DELETE SITE &raquo;</span>
+</span>
+</button>
+</div>
+</div>
+
